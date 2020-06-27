@@ -1,3 +1,5 @@
+CREATE DATABASE [IF NOT EXISTS] saas_db;
+USE saas_db;
 CREATE TABLE `serviceType` (
   `typeID` int PRIMARY KEY AUTO_INCREMENT,
   `typeName` varchar(255),

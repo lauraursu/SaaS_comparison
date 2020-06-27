@@ -1,0 +1,17 @@
+/* #423f9c #702c6e #862359 */
+$blue: #423f9c;
+$purple: #702c6e;
+$magenta: #862359;
+
+$list: $blue, $purple, $magenta;
+
+@mixin gradient($direction, $list) { 
+    background: -webkit-linear-gradient($direction, $list);
+    background: -moz-linear-gradient($direction, $list);
+    background: -o-linear-gradient($direction, $list);
+    background: linear-gradient($direction, $list);  
+  }
+
+.navig-backg{
+    @include gradient(left, $list); 
+}
