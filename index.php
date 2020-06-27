@@ -15,7 +15,7 @@ $page = "home"; 		//used to find the active page for the menu; used in includes/
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> 
-	<link href="style/style.css" rel="stylesheet">
+	<link href="style\style.css" rel="stylesheet">
 </head>
 
 <body>
