@@ -24,26 +24,7 @@ body {
 .navbar-link {
   font-size: 1.1em !important;
 }
-/* Back to top button */
-#myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: #702c6e; /* Set a background color */
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
-}
 
-#myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
-}
 
 .carousel-inner img {
   width: 100%;
@@ -91,6 +72,10 @@ body {
   padding-bottom: 2rem;
 }
 
+.padding2{
+  padding: 2em;
+  padding-right: 15%;
+}
 .welcome {
   width: 75%;
   margin: 0 auto;
@@ -104,21 +89,21 @@ body {
   margin-bottom: 1rem;
 }
 
-.fa-code {
-  color: #e54d26;
+.fa-edit {
+  color: #6648b1;
 }
 
-.fa-bold {
-  color: #563d7c;
+.fa-list {
+  color: #702c6e;
 }
 
-.fa-css3 {
-  color: #2163af;
+.fa-thumbs-up {
+  color: #862359;
 }
 
-.fa-code,
-.fa-bold,
-.fa-css3 {
+.fa-edit,
+.fa-list,
+.fa-thumbs-up{
   font-size: 4em;
   margin: 1rem;
 }
@@ -196,7 +181,7 @@ hr.light {
   }
 
   .carousel-caption h1 {
-    font-size: 350%;
+    font-size: 250%;
 
   }
 
@@ -207,8 +192,7 @@ hr.light {
   }
 
   .carousel-caption .btn {
-    font-size: 95%;
-    padding: 8px 14px;
+     display: none;
   }
 
   .display-4 {
@@ -229,7 +213,7 @@ hr.light {
   }
 
   .carousel-caption h1 {
-    font-size: 250%;
+    font-size: 180%;
 
   }
 
@@ -238,12 +222,13 @@ hr.light {
   }
 
   .carousel-caption .btn {
-    font-size: 90%;
-    padding: 4px 8px;
+   /* font-size: 90%;
+    padding: 4px 8px;*/
+    display: none;
   }
 
   .display-4 {
-    font-size: 160%;
+    font-size: 150%;
   }
 
   .social a {

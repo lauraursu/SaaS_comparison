@@ -1,8 +1,8 @@
-/* #423f9c #702c6e #862359 */
+/* #423f9c-#6648b1 #702c6e #862359 */
 .navig-backg {
-  background: -webkit-linear-gradient(left, #423f9c, #702c6e, #862359);
-  background: -moz-linear-gradient(left, #423f9c, #702c6e, #862359);
-  background: -o-linear-gradient(left, #423f9c, #702c6e, #862359);
-  background: linear-gradient(left, #423f9c, #702c6e, #862359); }
+  background: -webkit-linear-gradient(left, #6648b1, #702c6e, #862359);
+  background: -moz-linear-gradient(left, #6648b1, #702c6e, #862359);
+  background: -o-linear-gradient(left, #6648b1, #702c6e, #862359);
+  background: linear-gradient(left, #6648b1, #702c6e, #862359); }
 
 /*# sourceMappingURL=menu.css.map */

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $page = "home"; 		//used to find the active page for the menu; used in includes/menu/php
 ?>
@@ -14,8 +14,15 @@ $page = "home"; 		//used to find the active page for the menu; used in includes/
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> 
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link href="style\style.css" rel="stylesheet">
+
+<!-- Scroll to top button -->
+	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<link href="style\top-button.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -28,7 +35,7 @@ include 'includes/connect_to_db.php'
 
 
 	<!-- Navigation -->
-	
+
 <?php
 include 'includes/menu.php'
 ?>
@@ -43,17 +50,29 @@ include 'includes/menu.php'
 			<div class="carousel-item active">
 				<img class="sliderImg" src="img/image.png">
 				<div class="carousel-caption">
-					<h1 class="display-2">Bootstrap</h1>
-					<h3>Complete Website Layout</h3>
-					<button type="button" class="btn btn-outline-light btn-lg">View Demo</button>
-					<button type="button" class="btn btn-primary btn-lg">Get Started</button>
+					<h1 class="display-2">Bored of researching?</h1>
+					<h3> We already did it for you!</h3>
+					<button type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
+					<button type="button" class="btn btn-primary btn-lg">Compare</button>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<img class="sliderImg" src="img/image2.png">
+				<div class="carousel-caption">
+					<h1 class="display-2">Find what is right for Your Business</h1>
+					<h3> Let us help you choose!</h3>
+					<button type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
+					<button type="button" class="btn btn-primary btn-lg">Compare </button>
+				</div>
 			</div>
 			<div class="carousel-item">
 				<img class="sliderImg" src="img/image3.png">
+				<div class="carousel-caption">
+					<h1 class="display-2">Short survey to happiness</h1>
+					<h3> Complete it to get the software closest to your needs</h3>
+					<button type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
+					<button type="button" class="btn btn-primary btn-lg">Compare </button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -62,10 +81,10 @@ include 'includes/menu.php'
 	<div class="container-fluid">
 		<div class="row jumbotron">
 			<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-				<p class="lead">Valami hosszabb szoveg ide bla bla hello :)</p>
+				<p class="lead">The shortest path from an idea to the right choise. Complete a quick survey, tell us about your team and we will tell you what it needs! Choosing the right software as a service has never been easier :)</p>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-				<a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Web hosting</button></a>
+				<a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Take me there</button></a>
 			</div>
 		</div>
 	</div>
@@ -74,11 +93,11 @@ include 'includes/menu.php'
 	<div class="container-fluid padding">
 		<div class="row welcome text-center">
 			<div class="col-12">
-				<h1 class="display-4">Built with ease.</h1>
+				<h1 class="display-4">How it works</h1>
 			</div>
 			<hr>
 			<div class="col-12">
-				<p class="lead">Ide is kellene egy jo adag szoveg de soha sem tudom honnan pasteljek valamit. Big sad.
+				<p class="lead">We gathered every SaaS that counts and analysed them based on many different criterias so you don't lose your time doing it.
 				</p>
 			</div>
 		</div>
@@ -88,178 +107,103 @@ include 'includes/menu.php'
 	<div class="container-fluid padding">
 		<div class="row text-center padding">
 			<div class="col-xs-12 col-sm-6 col-md-4 ">
-				<i class="fas fa-code"></i> <!-- font awesome icons!-->
-				<h3>HTML5</h3>
-				<p>Built with the latest version of HTML, HTML5.</p>
+			<i class="far fa-edit"></i> <!-- font awesome icons!-->
+				<h3>Complete survey</h3>
+				<p>Tell us how big is your team, how much money you wanna invest and what are your preferences.</p>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 ">
-				<i class="fas fa-bold"></i> <!-- font awesome icons!-->
-				<h3>Bootstrap</h3>
-				<p>Built with the latest version of Bootstrap,Bootstrap4 .</p>
+			<i class="fa fa-list" aria-hidden="true"></i> <!-- font awesome icons!-->
+
+				<h3>Get list</h3>
+				<p>You will get a list of SaaS catered to your needs based on the criterias selected by you in the Survey.</p>
 			</div>
 			<div class="col-sm-12 col-md-4 ">
-				<i class="fab fa-css3"></i> <!-- font awesome icons!-->
-				<h3>CSS3</h3>
-				<p>Built with the latest version of CSS, CSS3.</p>
+			<i class="far fa-thumbs-up" aria-hidden="true"></i> <!-- font awesome icons!-->
+				<h3>Choose</h3>
+				<p>Found the perfect one? You are one click away from getting in touch with them.</p>
 			</div>
 		</div>
 		<hr class="my-4">
 	</div>
 
 	<!--- Two Column Section -->
-	<div class="container-fluid padding">
+	<div class="container-fluid padding ">
 		<div class="row padding">
-			<div class="col-md-12 col-lg-6">
-				<h2>If you built it...</h2>
-				<p>Valami nagyon hosszu szoveg.</p>
-				<p>Huha megtobb szoveg! wgat a surprise! :)</p>
-				<p>Legyen mar kevesebb szoveg, unom.</p>
+			<div class="col-md-12 col-lg-6 padding2">
+				<div class="padding2" align="justify">
+				<h2 >If you are a Software as a Service looking to appear in searches</h2>
+				<p  >Create an account and let's make your software seen! Add your SaaS to our list and attract other businesses that are looking exactly for what you are offering!</p>
+				<p>Making an account is fast and easy, plus, it's Free! You only have to pay a small percentage if customers purchase from you trough us.</p>
+				<p>We also offer a limited number of sponsored results for you to fill in. Contact us to find out more!</p>
 				<br>
-				<a href="#" class="btn btn-primary">Learn More</a>
+				<a href="#" class="btn btn-primary">Sign up</a>
+				</div>
 			</div>
 			<div class="col-lg-6">
 				<img src="img/desk.png" class="img-fluid">
 			</div>
 		</div>
 	</div>
-	<hr class="my-4">
-	<!--- Fixed background -->
-	<figure>
-		<div class="fixed-wrap">
-			<div id="fixed">
-			</div>
-		</div>
-	</figure>
-
-	<!--- Emoji Section -->
-	<button class="fun" data-toggle="collapse" data-target="#emoji">click for fun</button>
-	<div id="emoji" class="collapse">
-		<div class="container-fluid padding">
-			<div class="row text-center">
-				<div class="col-sm-6 col-md-3">
-					<img class="gif" src="img/gif/panda.gif">
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<img class="gif" src="img/gif/poo.gif">
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<img class="gif" src="img/gif/unicorn.gif">
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<img class="gif" src="img/gif/chicken.gif">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--- Meet the team -->
-	<div class="container-fluid padding">
-		<div class="row welcome text-center">
-			<div class="col-12">
-				<h1 class="display-4">Meet The Team</h1>
-			</div>
-			<hr>
-		</div>
-	</div>
-
-	<!--- Cards -->
-	<div class="container-fluid padding">
-		<div class="row padding">
-			<div class="col-md-4">
-				<div class="card">
-					<img class="card-img-top" src="img/team1.png">
-					<div class="card-body">
-						<h4 class="card-tittle">John Doe</h4>
-						<p class="card-text">John is very hardworking.</p>
-						<a href="#" class="btn btn-outline-secondary">See Profile</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card">
-					<img class="card-img-top" src="img/team2.png">
-					<div class="card-body">
-						<h4 class="card-tittle">Marry Joe</h4>
-						<p class="card-text">Marry is very hardworking.</p>
-						<a href="#" class="btn btn-outline-secondary">See Profile</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card">
-					<img class="card-img-top" src="img/team3.png">
-					<div class="card-body">
-						<h4 class="card-tittle">Paul Hoe</h4>
-						<p class="card-text">Paul is very hardworking.</p>
-						<a href="#" class="btn btn-outline-secondary">See Profile</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--- Two Column Section -->
-	<div class="container-fluid padding">
-		<div class="row padding">
-			<div class="col-md-12 col-lg-6">
-				<h2>Our philosophy</h2>
-				<p>Valami nagyon hosszu szoveg.</p>
-				<p>Huha megtobb szoveg! wgat a surprise! :)</p>
-				<br>
-			</div>
-			<div class="col-lg-6">
-				<img src="img/bootstrap2.png" class="img-fluid">
-			</div>
-		</div>
-		<hr class="my-4">
-	</div>
 
 
-	<!--- Connect -->
-	<div class="container-fluid padding">
-		<div class="row text-center padding">
-			<div class="col-12">
-				<h2>Connect</h2>
-			</div>
-			<div class="col-12 social padding">
-				<a href="#"><i class="fab fa-facebook"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#"><i class="fab fa-instagram"></i></a>
-				<a href="#"><i class="fab fa-youtube"></i></a>
-			</div>
-		</div>
-	</div>
+
+	<!--- Top button -->
+	<a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out"
+		data-abc="true"></a>
+	<!-- <div class="height">
+		<h3 class="text-center scroll">Scroll down </h3>
+	</div> -->
+
+<script>
+	$(document).ready(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 700) {
+				$('#toTopBtn').fadeIn();
+			} else {
+				$('#toTopBtn').fadeOut();
+			}
+		});
+
+		$('#toTopBtn').click(function () {
+			$("html, body").animate({
+				scrollTop: 0
+			}, 1000);
+			return false;
+		});
+	});
+</script>
+
 
 	<!--- Footer -->
 	<footer>
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img src="img/w3newbie.png">
+					<img id="logo" src="img/logo/logo_v4.png"><p>OmniCompare<p>
 					<hr class="light">
-					<p>555-555-5555</p>
-					<p>email@yahoo.com</p>
-					<p>100 Street Name</p>
-					<p>City,State,00000</p>
+					<p>Report a bug</p>
+					<p>Contact us</p>
+					<p>Survey</p>
+					<p>Pictures of cats</p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5>Our hours</h5>
+					<h5>SaaS Vendors</h5>
 					<hr class="light">
-					<p>Monday: 5pm-6pm</p>
-					<p>Friday: 10am-11pm</p>
+					<p>Vendors</p>
+					<p>Free SignUp</p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5>Service area</h5>
+					<h5>Policies</h5>
 					<hr class="light">
-					<p>City,State,00000</p>
-					<p>City,State,00000</p>
-					<p>City,State,00000</p>
+					<p>Terms of Use</p>
+					<p>Privacy Policy</p>
+					<p>Community Guidelines</p>
 				</div>
 				<div class="col-12">
 					<hr class="light">
-					<h5>&copy;w3newbie.com</h5>
+					<h5>&copy;OmniCompare.com</h5>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,6BAA6B;AAc7B,YAAY;EANR,UAAU,EAAE,wDAA0C;EACtD,UAAU,EAAE,qDAAuC;EACnD,UAAU,EAAE,mDAAqC;EACjD,UAAU,EAAE,gDAAkC",
+"mappings": "AAAA,qCAAqC;AAcrC,YAAY;EANR,UAAU,EAAE,wDAA0C;EACtD,UAAU,EAAE,qDAAuC;EACnD,UAAU,EAAE,mDAAqC;EACjD,UAAU,EAAE,gDAAkC",
 "sources": ["menu.scss"],
 "names": [],
 "file": "menu.css"
