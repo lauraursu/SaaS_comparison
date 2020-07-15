@@ -1,7 +1,9 @@
 <link href="style/menu.css" rel="stylesheet">
 <nav class="navbar navbar-expand-md navbar-dark  sticky-top navig-backg" id="coll-menu">
 <div class="container-fluid" >
-    <a class="navbar-brand" href="#"><img id="logo" src="img/logo/logo_v4.png">OmniCompare</a>
+    <!-- <a class="navbar-brand" href="#"><img id="logo" src="img/logo/logo_v4.png">OmniCompare</a> -->
+    <a class="navbar-brand" href="#"><img id="logo" src="img/logo/icons811.png">  OmniCompare</a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,8 +15,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
+            <li class="nav-item <?php if ($page == "survey") {?>active<?php } ?>">
+                <a class="nav-link" href=".\survey.php">Survey</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Team</a>

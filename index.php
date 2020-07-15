@@ -5,7 +5,7 @@ $page = "home"; 		//used to find the active page for the menu; used in includes/
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="shortcut icon" type="image/jpg" href="img/logo/logo_v2.png"/>
+<link rel="shortcut icon" type="image/jpg" href="img/logo/icons811.png"/>  <!--favicon --> 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,7 +179,7 @@ include 'includes/menu.php'
 		<div class="container-fluid padding">
 			<div class="row text-center">
 				<div class="col-md-4">
-					<img id="logo" src="img/logo/logo_v4.png"><p>OmniCompare<p>
+					<img id="logo" src="img/logo/icons811.png"><p>OmniCompare<p>
 					<hr class="light">
 					<p>Report a bug</p>
 					<p>Contact us</p>

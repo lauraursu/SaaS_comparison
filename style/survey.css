@@ -1,0 +1,99 @@
+.container {
+
+  /* width: 75%; */
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 0.2rem;
+  flex-flow: row wrap;
+
+}
+
+.container1 {
+
+  /* width: 75%; */
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-top: 2rem;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+
+#surveyImage {
+  max-width: 50%;
+  max-height: auto;
+}
+
+
+
+/* ---Media Queries -- */
+@media (max-width: 1048px) {
+  #surveyImage {
+    max-width: 89%;
+    max-height: auto;
+    margin-left: 25%;
+  margin-right: 25%;
+  }
+  .container {
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-top: 0.2rem;
+    padding: none;
+    flex-flow: row wrap;
+
+  }
+  .shift{
+   margin-left: 2em;
+   margin-right: 2em;
+   margin-bottom: 0.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  #surveyImage {
+    max-width: 100%;
+    max-height: auto;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  .container {
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-top: 0.2rem;
+    padding: none;
+    flex-flow: row wrap;
+
+  }
+  .shift{
+   margin-left: 2em;
+   margin-right: 2em;
+   margin-bottom: 0.8em;
+  }
+
+
+}
+
+@media (max-width: 576px) {
+  #surveyImage {
+    max-width: 100%;
+    max-height: auto;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  .container {
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-top: 0.2rem;
+    padding: none;
+    flex-flow: row wrap;
+
+  }
+  .shift{
+   margin-left: 2rem;
+   margin-right: 2rem;
+   margin-bottom: 0.8em;
+  }
+
+}
