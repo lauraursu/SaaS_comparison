@@ -79,7 +79,7 @@ include 'includes/menu.php'
                             placeholder="Number of people hosting meetings">
                         <label for="nrAttend">How many people will be <b>attending</b> your
                             meetings</label>
-                        <input class="form-control" id="nrAttend" type="number"
+                        <input class="form-control" id="nrAttend" name="nrAttend" type="number"
                             placeholder="Number of people attending meetings">
                     </div> <input type="button" name="next" class="next action-button" value="Next Step" />
                 </fieldset>
