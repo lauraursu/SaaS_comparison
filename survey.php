@@ -17,11 +17,14 @@ $page = "survey"; 		//used to find the active page for the menu; used in include
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script> -->
+    <script src=https://kit.fontawesome.com/a076d05399.js></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script> -->
 
     <link href="style\style.css" rel="stylesheet">
     <link href="style\survey.css" rel="stylesheet">
+    <link href="style\survey1.css" rel="stylesheet">
+
     <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
 
     <!-- Bootsrap 4.5.0 -->
@@ -30,23 +33,6 @@ $page = "survey"; 		//used to find the active page for the menu; used in include
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
 
-
-    <style>
-        .modal-header,
-        h4,
-        .close {
-            background-color: #5cb85c;
-            color: white !important;
-            text-align: center;
-            font-size: 30px;
-        }
-
-        .modal-footer {
-            background-color: #f9f9f9;
-        }
-    </style>
-
-</head>
 
 <body>
 
@@ -62,133 +48,196 @@ include 'includes/connect_to_db.php'
     <?php
 include 'includes/menu.php'
 ?>
-<div class="container1">
-<p>Complete this survey so we can make the perfect list for you! </p>
-</div>
+
+
+
+    <div class="container1">
+        <h2 class="smoll">Complete this survey so we can make the perfect list for you! </h2>
+    </div>
     <div class="container">
-    <img id="surveyImage" src=".\img\pictures\form.png" alt="Complete the form">
+        <img id="surveyImage" src=".\img\pictures\form.png" alt="Complete the form">
 
-        <!-- Button trigger modal1 -->
-        <button type="button" class="btn btn-primary shift" data-toggle="modal" data-target="#teamModal">
-            I. Your team
-        </button>
 
-        <!-- Modal 1-->
-        <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="teamModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:#6648b1;">
-                        <h5 class="modal-title" id="teamModalLabel">Your team</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- the actual survey for the your team part -->
-                        <form>
-                            <div class="form-group">
-                                <label for="nrHosts">How many people will be <b>hosting</b> meetings</label>
-                                <input class="form-control" id="nrHosts" type="number"
-                                    placeholder="Number of people hosting meetings">
+
+
+        <!-- MultiStep Form -->
+
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <form id="msform" action="result.php" method="post">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                    <li class="active" id="account"><strong>Your team</strong></li>
+                    <li id="personal"><strong>Payments</strong></li>
+                    <li id="payment"><strong>Preferences</strong></li>
+                    <li id="confirm"><strong>Finish</strong></li>
+                </ul> <!-- fieldsets -->
+                <fieldset>
+                    <div class="form-card">
+                        <h2 class="fs-title">Tell us about your team</h2>
+                        <label for="nrHosts">How many people will be <b>hosting</b> meetings</label>
+                        <input class="form-control" id="nrHosts" name="nrHosts" type="number"
+                            placeholder="Number of people hosting meetings">
+                        <label for="nrAttend">How many people will be <b>attending</b> your
+                            meetings</label>
+                        <input class="form-control" id="nrAttend" type="number"
+                            placeholder="Number of people attending meetings">
+                    </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+                </fieldset>
+                <fieldset>
+                    <div class="form-card">
+                        <h2 class="fs-title">Payments, budget</h2>
+                        <label for="priceSelect"><b>Price range</b></label>
+                        <select multiple class="form-control" id="priceSelect">
+                            <option>Free</option>
+                            <option>0 - min</option>
+                            <option>min - middle</option>
+                            <option>middle - max</option>
+                        </select>
+                        How <b>frequently </b> do you want to pay? <br>
+                        <input class="form-check-input" type="radio" name="gridRadios" id="monthlyRadio" value="monthly"
+                            checked>
+                        <label class="form-check-label" for="monthlyRadio">
+                            Monthly
+                        </label><br>
+                        <input class="form-check-input" type="radio" name="gridRadios" id="yearlyRadio" value="yearly">
+                        <label class="form-check-label" for="yearlyRadio">
+                            Yearly
+                        </label><br>
+                        <input class="form-check-input" type="radio" name="gridRadios" id="doesntmatter"
+                            value="doesntmatter">
+                        <label class="form-check-label" for="doesntmatter">
+                            Doesn't matter
+                        </label><br>
+                    </div> <input type="button" name="previous" class="previous action-button-previous"
+                        value="Previous" /> <input type="button" name="next" class="next action-button"
+                        value="Next Step" />
+                </fieldset>
+                <fieldset>
+                    <div class="form-card">
+                        <h2 class="fs-title">Preferences</h2>
+                        <b>Select</b> all that you find <b>important </b>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="hand" name="hand">
+                            <label class="form-check-label" for="hand"> Raise hand</label><br>
+                            <input class="form-check-input" type="checkbox" name="record" value="record">
+                            <label class="form-check-label" for="record"> Record meeting</label><br>
+                            <input class="form-check-input" type="checkbox" name="privacy" value="pricacy">
+                            <label class="form-check-label" for="hand"> Privacy</label><br>
+                            <input class="form-check-input" type="checkbox" name="screenshare" value="screenshare">
+                            <label class="form-check-label" for="hand"> Screensharing</label><br>
+                            <input class="form-check-input" type="checkbox" name="hand" value="Bike">
+                            <label class="form-check-label" for="hand"> Raise hand</label><br>
+                        </div>
+
+                    </div> <input type="button" name="previous" class="previous action-button-previous"
+                        value="Previous" /> <input type="button" name="finish" class="next action-button"
+                        value="Confirm" />
+                </fieldset>
+                <fieldset>
+                    <div class="form-card">
+                        <h2 class="fs-title text-center">Congrats!</h2> <br><br>
+                        <div class="row justify-content-center">
+                            <div class="col-6"> <img src=".\img\succ.png" class="fit-image"> </div>
+                        </div> <br><br>
+                        <div class="row justify-content-center">
+                            <div class="col-7 text-center">
+                                <h5>We have created your personalized list</h5>
+                                <button type="submit" class="btn btn-primary">See my list</button>
                             </div>
-                            <div class="form-group">
-                                <label for="nrAttend">How many people will be <b>attending</b> your meetings</label>
-                                <input class="form-control" id="nrAttend" type="number"
-                                    placeholder="Number of people attending meetings">
-                            </div>
-                        </form>
 
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- Button trigger modal2 -->
-        <button type="button" class="btn btn-primary shift" data-toggle="modal" data-target="#paymentsModal">
-            II. Payments, budget
-        </button>
-
-        <!-- Modal2 -->
-        <div class="modal fade" id="paymentsModal" tabindex="-1" role="dialog" aria-labelledby="paymentsModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:#6648b1;">
-                        <h5 class="modal-title" id="paymentsModalLabel">Budget</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- the actual survey for the budget part -->
-                        <form>
-                            <div class="form-group">
-                                <label for="priceSelect"><b>Price range</b></label>
-                                <select multiple class="form-control" id="priceSelect">
-                                    <option>Free</option>
-                                    <option>0 - min</option>
-                                    <option>min - middle</option>
-                                    <option>middle - max</option>
-                                </select>
-                            </div>
-
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Button trigger modal3 -->
-        <button type="button" class="btn btn-primary shift" data-toggle="modal" data-target="#prefModal">
-            III. Preferences
-        </button>
-
-        <!-- Modal3 -->
-        <div class="modal fade" id="prefModal" tabindex="-1" role="dialog" aria-labelledby="prefModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header " style="background-color:#6648b1;">
-                        <h5 class="modal-title" id="prefModalLabel">Preferences</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- the actual survey for the preferences part -->
-                        <form>
-                            <b>Select</b> all that you find <b>important </b>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="hand" name="hand">
-                                <label class="form-check-label" for="hand"> Raise hand</label><br>
-                                <input class="form-check-input" type="checkbox" name="record" value="record">
-                                <label class="form-check-label" for="record"> Record meeting</label><br>
-                                <input class="form-check-input" type="checkbox" name="privacy" value="pricacy">
-                                <label class="form-check-label" for="hand"> Privacy</label><br>
-                                <input class="form-check-input" type="checkbox" name="screenshare" value="screenshare">
-                                <label class="form-check-label" for="hand"> Screensharing</label><br>
-                                <input class="form-check-input" type="checkbox" name="hand" value="Bike">
-                                <label class="form-check-label" for="hand"> Raise hand</label><br>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 
+
+    <script>
+        $(document).ready(function () {
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+
+            $(".next").click(function () {
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 600
+                });
+            });
+
+            $(".previous").click(function () {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 600
+                });
+            });
+
+            $('.radio-group .radio').click(function () {
+                $(this).parent().find('.radio').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            $(".submit").click(function () {
+                return false;
+            })
+
+        });
+    </script>
+
+
+
+    <!--- Footer -->
+    <?php
+include 'includes/footer.php'
+?>
 
 
 
