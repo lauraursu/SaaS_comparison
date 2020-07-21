@@ -49,7 +49,37 @@ include 'includes/connect_to_db.php'
 include 'includes/menu.php'
 ?>
 
+ <!-- getting the price ranges from the sb to use those as options -->
+ <?php
+ $minimumPriceY = mysqli_query($conn, "SELECT min(priceY) from service");
+ if ($minimumPriceY) {
+     while ($row = mysqli_fetch_assoc($minimumPriceY)) {
+             $m =  $row["min(priceY)"];
+     }
+ } 
 
+$maximumPriceY = mysqli_query ($conn, "SELECT max(priceY) from service");
+if ($maximumPriceY){
+    while ($row = mysqli_fetch_assoc($maximumPriceY)){
+        $mx = $row["max(priceY)"];
+    }
+}
+
+$avgPriceY = mysqli_query ($conn, "SELECT ROUND(avg(priceY)) as avarage from service");
+
+if ($avgPriceY){
+    while ($row = mysqli_fetch_assoc($avgPriceY)){
+        $a = $row["avarage"];
+    } 
+}else echo "no";
+$optionValues = array (
+    'free' => 'Free',
+    'minimum' => $m,
+    'avarage' => $a,
+    'maximum' => $mx
+)
+
+ ?>
 
     <div class="container1">
         <h2 class="smoll">Complete this survey so we can make the perfect list for you! </h2>
@@ -87,12 +117,28 @@ include 'includes/menu.php'
                     <div class="form-card">
                         <h2 class="fs-title">Payments, budget</h2>
                         <label for="priceSelect"><b>Price range</b></label>
-                        <select multiple class="form-control" id="priceSelect">
-                            <option>Free</option>
-                            <option>0 - min</option>
+<?php 
+$html= '<select name="range" class="form-control" id="priceSelect" >';
+foreach($optionValues as $value => $display){
+        $html .= '<option value="'.$value.'" selected>'.$display.'</option>';
+}
+
+$html .= '</select>';
+
+
+echo $html;
+?>
+
+
+
+
+                        <!-- <select name="range[]" multiple class="form-control" id="priceSelect" > -->
+                            <!-- <option>Free</option> -->
+                            
+                            <!-- <option>  0 - min</option>
                             <option>min - middle</option>
                             <option>middle - max</option>
-                        </select>
+                        </select> -->
                         How <b>frequently </b> do you want to pay? <br>
                         <input class="form-check-input" type="radio" name="gridRadios" id="monthlyRadio" value="monthly"
                             checked>
@@ -117,15 +163,16 @@ include 'includes/menu.php'
                         <h2 class="fs-title">Preferences</h2>
                         <b>Select</b> all that you find <b>important </b>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="hand" name="hand">
+                      
+                            <input class="form-check-input" type="checkbox" name="hand[]" value="raisehand" id="hand" >
                             <label class="form-check-label" for="hand"> Raise hand</label><br>
-                            <input class="form-check-input" type="checkbox" name="record" value="record">
+                            <input class="form-check-input" type="checkbox" name="hand[]" value="record">
                             <label class="form-check-label" for="record"> Record meeting</label><br>
-                            <input class="form-check-input" type="checkbox" name="privacy" value="pricacy">
+                            <input class="form-check-input" type="checkbox" name="hand[]" value="pricacy">
                             <label class="form-check-label" for="hand"> Privacy</label><br>
-                            <input class="form-check-input" type="checkbox" name="screenshare" value="screenshare">
+                            <input class="form-check-input" type="checkbox" name="hand[]" value="screenshare">
                             <label class="form-check-label" for="hand"> Screensharing</label><br>
-                            <input class="form-check-input" type="checkbox" name="hand" value="Bike">
+                            <input class="form-check-input" type="checkbox" name="hand[]" value="Bike">
                             <label class="form-check-label" for="hand"> Raise hand</label><br>
                         </div>
 
