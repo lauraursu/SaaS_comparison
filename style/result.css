@@ -8,4 +8,8 @@
     padding-left: 0px;
     padding-right: 0px ;
     max-width: 310px;
+    height: 477px;;
+}
+.card-body {
+    ...
 }
