@@ -1,10 +1,11 @@
 
 .results {
-    margin: 55px;
+    margin-left: 455px;
   }
 
 .col {
     padding-top: 10px;
     padding-left: 0px;
     padding-right: 0px ;
+    max-width: 310px;
 }
