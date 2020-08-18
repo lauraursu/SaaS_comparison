@@ -74,9 +74,9 @@ if ($avgPriceY){
 }else echo "no";
 $optionValues = array (
     'free' => 'Free',
-    'minimum' => $m,
-    'avarage' => $a,
-    'maximum' => $mx
+    'minimum' => '$'.$m.' - $'.$a,
+    'avarage' => '$'.$a.' - $'.$mx
+   // 'maximum' => $mx
 )
 
  ?>
@@ -149,11 +149,7 @@ echo $html;
                         <label class="form-check-label" for="yearlyRadio">
                             Yearly
                         </label><br>
-                        <input class="form-check-input" type="radio" name="gridRadios" id="doesntmatter"
-                            value="doesntmatter">
-                        <label class="form-check-label" for="doesntmatter">
-                            Doesn't matter
-                        </label><br>
+                      
                     </div> <input type="button" name="previous" class="previous action-button-previous"
                         value="Previous" /> <input type="button" name="next" class="next action-button"
                         value="Next Step" />
@@ -163,18 +159,17 @@ echo $html;
                         <h2 class="fs-title">Preferences</h2>
                         <b>Select</b> all that you find <b>important </b>
                         <div class="form-check">
-                      
-                            <input class="form-check-input" type="checkbox" name="hand[]" value="raisehand" id="hand" >
-                            <label class="form-check-label" for="hand"> Raise hand</label><br>
-                            <input class="form-check-input" type="checkbox" name="hand[]" value="record">
-                            <label class="form-check-label" for="record"> Record meeting</label><br>
-                            <input class="form-check-input" type="checkbox" name="hand[]" value="pricacy">
-                            <label class="form-check-label" for="hand"> Privacy</label><br>
-                            <input class="form-check-input" type="checkbox" name="hand[]" value="screenshare">
-                            <label class="form-check-label" for="hand"> Screensharing</label><br>
-                            <input class="form-check-input" type="checkbox" name="hand[]" value="Bike">
-                            <label class="form-check-label" for="hand"> Raise hand</label><br>
-                        </div>
+
+                       <?php 
+                       $features = mysqli_query($conn, "select featureName from features");
+                       $i=0;
+                       while($serviceStack = mysqli_fetch_assoc($features)){
+                           ?>
+                       <input class="form-check-input" type="checkbox" name = "hand[]" value="<?=$serviceStack["featureName"];?>">
+                       <label class="form-check-label" for="hand" ><?=$serviceStack["featureName"];?></label><br>
+                        <?php 
+                           $i++;}?>
+                       </div> 
 
                     </div> <input type="button" name="previous" class="previous action-button-previous"
                         value="Previous" /> <input type="button" name="finish" class="next action-button"

@@ -82,12 +82,12 @@ if ($avgPriceY){
     while ($row = mysqli_fetch_assoc($avgPriceY)){
         $a = $row["avarage"];
     } 
-}else echo "no";
+}else echo "something went wrong";
 $optionValues = array (
     'free' => 'Free',
-    'minimum' => $m,
-    'avarage' => $a,
-    'maximum' => $mx
+    'minimum' => '$'.$m.' - $'.$a,
+    'avarage' => '$'.$a.' - $'.$mx
+   // 'maximum' => $mx
 );
 
 //
@@ -104,13 +104,23 @@ $optionValues = array (
 
 $numberOfHosts =$_POST["nrHosts"]; //how many hosts
 $numberOfAttend =$_POST["nrAttend"]; //how many attendees
-$selectedPriceRange = $_POST['range'];  //what is the pricerange they selected, this is JUST THE KEY FROM the $optionValues array  
+$selectedPriceRange = $_POST['range'];  //what is the pricerange they selected, this is JUST THE KEY FROM the $optionValues array
+if ($selectedPriceRange == 'free'){
+    $price = 0;
+}  else if ($selectedPriceRange == 'minimum'){
+    $price = $a;
+} else $price = $mx;
 $optionValues[$selectedPriceRange]; //this is the value from the $optionValues array
 $payFreq = $_POST["gridRadios"];        //how freq they want to pay, month year doesntmatter
+if ($payFreq == "monthly"){
+    $payFreqDB = "priceM";
+} else $payFreqDB = "priceY";           //if they choose it doesnt matter, we look at the yearly price because thats the lowest
+
+
 $selectedPreferences = $_POST['hand'];      //what are the functions they want, selected preferences !!its an array bc multiple items
-$n = count($selectedPreferences); //how many preferences are selected
-foreach ($selectedPreferences as $a) // all the values selected as preferences
-// echo  $a."\n";
+//$n = count($selectedPreferences); //how many preferences are selected
+//foreach ($selectedPreferences as $a) // all the values selected as preferences
+//echo  $a."\n";
 
 
   $hostsNULL = mysqli_query($conn, "SELECT serviceName from service where hosts is NULL");  //checking if there is no limit in the db for the hosts aka no data given 
@@ -125,51 +135,102 @@ foreach ($selectedPreferences as $a) // all the values selected as preferences
 //echo ("nr of hattendees:  $numberOfAttend <br>");
 $serviceAttend = mysqli_query($conn, "SELECT serviceName from service where attendees >= $numberOfAttend");
 if ($serviceAttend){
-    echo "<b>services that have atleast the nr of attend</b> <br>";
     while ($row = mysqli_fetch_assoc($serviceAttend)){
-      printf ("%s", $row["serviceName"]. '<br>');
+    //  printf ("%s", $row["serviceName"]. '<br>');
     }
 } 
 
 $serviceHost = mysqli_query ($conn, "SELECT serviceName from service where hosts >= $numberOfHosts");
 if ($serviceHost){
-    echo "<b>services that have atleast the nr of hosts</b> <br>";
     while ($row = mysqli_fetch_assoc($serviceHost)){
-        printf ("%s", $row["serviceName"]. '<br>');
+      //  printf ("%s", $row["serviceName"]. '<br>');
     }
 }
-$servicePriceAt = mysqli_query ($conn, "SELECT serviceName from service where priceY <= $optionValues[$selectedPriceRange]");
+$servicePriceAt = mysqli_query ($conn, "SELECT serviceName from service where priceY <= $price");
 if ($servicePriceAt){
-    echo "<b>services with price lower than selected </b><br>";
     while ($row = mysqli_fetch_assoc($servicePriceAt)){
-        printf ("%s", $row["serviceName"]. '<br>');
+      //  printf ("%s", $row["serviceName"]. '<br>');
     }
 }
 
+// how freq they want to pay, see if they can pay like that, if not, don't show it, otherwise show them
+// used for exclusion
+//it can be payed yearly or monthly if the priceY/priceM is NOT null
+
+$servicePayableYear = mysqli_query( $conn, "SELECT serviceName from service where priceY IS NOT NULL");
+if ($servicePayableYear){
+    while($row = mysqli_fetch_assoc($servicePayableYear)){
+      //  printf ("%s", $row["serviceName"].'<br>');
+    }
+}
+
+$servicePayableMonth = mysqli_query( $conn, "SELECT serviceName from service where priceM IS NOT NULL");
+if ($servicePayableMonth){
+    while($row = mysqli_fetch_assoc($servicePayableMonth)){
+       // printf ("%s", $row["serviceName"].'<br>');
+    }
+}
+
+//OR we can check for the names that cant be payed w selected method (the value IS null) and exclude them later
+
+$serviceNotPayableYear = mysqli_query( $conn, "SELECT serviceName from service where priceY IS NULL");
+if ($serviceNotPayableYear){
+    while($row = mysqli_fetch_assoc($serviceNotPayableYear)){
+      //  printf ("%s", $row["serviceName"].'<br>');
+    }
+}
+
+$serviceNotPayableMonth = mysqli_query( $conn, "SELECT serviceName from service where priceM IS NULL");
+if ($serviceNotPayableMonth){
+    while($row = mysqli_fetch_assoc($serviceNotPayableMonth)){
+      //  printf ("%s", $row["serviceName"].'<br>');
+    }
+}
+
+// ---------------------------------------
+//we look at the services with MORE attendees & host than given, AND the price is smaller than the pricerange, AND we can pay them at selected requency
+//if hosts/attendees is NULL ==> no limit to hosts
+if ($payFreqDB == "priceM"){
+$finalResult = mysqli_query( $conn, "SELECT serviceName, priceM, priceY, webpage, image from service where attendees >= $numberOfAttend OR attendees IS NULL AND hosts >= $numberOfHosts OR hosts IS NULL AND priceM <= $price AND $payFreqDB IS NOT NULL ");
+}else $finalResult = mysqli_query( $conn, "SELECT serviceName, priceM, priceY, webpage, image from service where attendees >= $numberOfAttend OR attendees IS NULL AND hosts >= $numberOfHosts or hosts IS NULL AND priceY <= $price AND $payFreqDB IS NOT NULL ");
+if ($finalResult){
+    echo "<b>FINAL: </b><br>";
+    while($row = mysqli_fetch_assoc($finalResult)){
+        //printf ("%s", $row["serviceName"].$row["priceY"].'<br>');
+      //  echo '<img src="data:image/jpeg;base64,'.base64_encode( $row["image"] ).'"/>';   
+      
+      $array = array(
+        'image' => $row["image"],
+        'name' => $row["serviceName"],
+        'priceY' => $row["priceY"],
+        'priceM' => $row["priceM"],
+        'webpage' => $row["webpage"]
+    );// printf($array['image'].'<br>');
+
+     ?>
+     
+     <div class="card" style="width: 18rem;">
+     <?php echo '<img  class="card-img-top" src="data:image/jpeg;base64,'.base64_encode( $row["image"] ).'"/>';  ?>
+      <div class="card-body">
+          <h5 class="card-title"><?php echo($array['name'])?></h5>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">Monthly price: <b> <?php echo($array["priceM"]) ?> </b></li>
+              <li class="list-group-item">Yearly price: <b> <?php echo($array["priceY"]) ?> </b></li>
+          </ul>
+        <a href="<?php echo($array["webpage"]) ?>" class="btn btn-primary">Take me to the website</a>
+      </div>
+    </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-$array = array(
-    'image' => "ssss image here",
-    'name' => "Name of webpage example",
-    'priceY' => 1,
-    'priceM' => 1,
-    'webpage' => "webp"
-);
-// print_r($array);
+<?php
+       
+    }
+}
 
 ?>
+
 
 <!-- Showing the results in card form -->
 
