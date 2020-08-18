@@ -19,6 +19,7 @@ $page = "result"; 		//used to find the active page for the menu; used in include
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link href="style\style.css" rel="stylesheet">
+    <link href="style\result.css" rel="stylesheet">
 
     <!-- Scroll to top button -->
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
@@ -47,17 +48,9 @@ $res = mysqli_query($mysqli, "SELECT 'Please, do not use ' AS _msg FROM DUAL");
 $row = mysqli_fetch_assoc($res);
 echo $row['_msg']; -->
 
-
+<div class="results">
     Based on the information provided by you, we feel like you would like these services: <br> <br>
 
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 
 
     <?php
@@ -190,11 +183,18 @@ if ($serviceNotPayableMonth){
 // ---------------------------------------
 //we look at the services with MORE attendees & host than given, AND the price is smaller than the pricerange, AND we can pay them at selected requency
 //if hosts/attendees is NULL ==> no limit to hosts
+
+?> 
+<!-- for the cards  -->
+<div class="card-deck">
+
+<?php
+
+
 if ($payFreqDB == "priceM"){
 $finalResult = mysqli_query( $conn, "SELECT serviceName, priceM, priceY, webpage, image from service where attendees >= $numberOfAttend OR attendees IS NULL AND hosts >= $numberOfHosts OR hosts IS NULL AND priceM <= $price AND $payFreqDB IS NOT NULL ");
 }else $finalResult = mysqli_query( $conn, "SELECT serviceName, priceM, priceY, webpage, image from service where attendees >= $numberOfAttend OR attendees IS NULL AND hosts >= $numberOfHosts or hosts IS NULL AND priceY <= $price AND $payFreqDB IS NOT NULL ");
 if ($finalResult){
-    echo "<b>FINAL: </b><br>";
     while($row = mysqli_fetch_assoc($finalResult)){
         //printf ("%s", $row["serviceName"].$row["priceY"].'<br>');
       //  echo '<img src="data:image/jpeg;base64,'.base64_encode( $row["image"] ).'"/>';   
@@ -208,18 +208,20 @@ if ($finalResult){
     );// printf($array['image'].'<br>');
 
      ?>
-     
+ 
+ <div class="col">
      <div class="card" style="width: 18rem;">
-     <?php echo '<img  class="card-img-top" src="data:image/jpeg;base64,'.base64_encode( $row["image"] ).'"/>';  ?>
+     <?php echo '<img  class="card-img-top" src="data:image/jpeg;base64,'.base64_encode( $row["image"] ).'"/ style="height: 200px; width: 100%; display: block;">';  ?>
       <div class="card-body">
           <h5 class="card-title"><?php echo($array['name'])?></h5>
           <ul class="list-group list-group-flush">
-              <li class="list-group-item">Monthly price: <b> <?php echo($array["priceM"]) ?> </b></li>
-              <li class="list-group-item">Yearly price: <b> <?php echo($array["priceY"]) ?> </b></li>
+              <li class="list-group-item">Monthly price: <b> $<?php echo($array["priceM"]) ?> </b></li>
+              <li class="list-group-item">Yearly price: <b> $<?php echo($array["priceY"]) ?> </b></li>
           </ul>
         <a href="<?php echo($array["webpage"]) ?>" class="btn btn-primary">Take me to the website</a>
       </div>
     </div>
+</div>
 
 
 
@@ -233,7 +235,7 @@ if ($finalResult){
 
 
 <!-- Showing the results in card form -->
-
+</div>
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
@@ -242,7 +244,7 @@ if ($finalResult){
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-
+</div>
     <!--- Footer -->
 
     <?php
