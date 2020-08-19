@@ -5,3 +5,4 @@ TO DO
 * Validate form
 * don't show price in cards if its null
 * make cards same size (card-body)
+* make form required

@@ -18,8 +18,8 @@ $page = "survey"; 		//used to find the active page for the menu; used in include
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script> -->
-    <script src=https://kit.fontawesome.com/a076d05399.js></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script> -->
+    <script src=https://kit.fontawesome.com/a076d05399.js> </script> <!-- <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script> -->
 
     <link href="style\style.css" rel="stylesheet">
     <link href="style\survey.css" rel="stylesheet">
@@ -49,8 +49,8 @@ include 'includes/connect_to_db.php'
 include 'includes/menu.php'
 ?>
 
- <!-- getting the price ranges from the sb to use those as options -->
- <?php
+    <!-- getting the price ranges from the sb to use those as options -->
+    <?php
  $minimumPriceY = mysqli_query($conn, "SELECT min(priceY) from service");
  if ($minimumPriceY) {
      while ($row = mysqli_fetch_assoc($minimumPriceY)) {
@@ -91,7 +91,6 @@ $optionValues = array (
 
 
         <!-- MultiStep Form -->
-
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
             <form id="msform" action="result.php" method="post">
                 <!-- progressbar -->
@@ -106,18 +105,20 @@ $optionValues = array (
                         <h2 class="fs-title">Tell us about your team</h2>
                         <label for="nrHosts">How many people will be <b>hosting</b> meetings</label>
                         <input class="form-control" id="nrHosts" name="nrHosts" type="number"
-                            placeholder="Number of people hosting meetings">
+                            placeholder="Number of people hosting meetings" required>
+                            <p id="hostError" class="formError"></p>
                         <label for="nrAttend">How many people will be <b>attending</b> your
                             meetings</label>
                         <input class="form-control" id="nrAttend" name="nrAttend" type="number"
                             placeholder="Number of people attending meetings">
-                    </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+                            <p id="attendError" class="formError"></p>
+                    </div> <input type="button" name="next" id="next1" class="next action-button" value="Next Step" />
                 </fieldset>
                 <fieldset>
                     <div class="form-card">
                         <h2 class="fs-title">Payments, budget</h2>
                         <label for="priceSelect"><b>Price range</b></label>
-<?php 
+                        <?php 
 $html= '<select name="range" class="form-control" id="priceSelect" >';
 foreach($optionValues as $value => $display){
         $html .= '<option value="'.$value.'" selected>'.$display.'</option>';
@@ -129,16 +130,6 @@ $html .= '</select>';
 echo $html;
 ?>
 
-
-
-
-                        <!-- <select name="range[]" multiple class="form-control" id="priceSelect" > -->
-                            <!-- <option>Free</option> -->
-                            
-                            <!-- <option>  0 - min</option>
-                            <option>min - middle</option>
-                            <option>middle - max</option>
-                        </select> -->
                         How <b>frequently </b> do you want to pay? <br>
                         <input class="form-check-input" type="radio" name="gridRadios" id="monthlyRadio" value="monthly"
                             checked>
@@ -149,27 +140,28 @@ echo $html;
                         <label class="form-check-label" for="yearlyRadio">
                             Yearly
                         </label><br>
-                      
+
                     </div> <input type="button" name="previous" class="previous action-button-previous"
                         value="Previous" /> <input type="button" name="next" class="next action-button"
                         value="Next Step" />
                 </fieldset>
                 <fieldset>
-                    <div class="form-card">
+                    <div class="form-card ">
                         <h2 class="fs-title">Preferences</h2>
                         <b>Select</b> all that you find <b>important </b>
                         <div class="form-check">
 
-                       <?php 
+                            <?php 
                        $features = mysqli_query($conn, "select featureName from features");
                        $i=0;
                        while($serviceStack = mysqli_fetch_assoc($features)){
                            ?>
-                       <input class="form-check-input" type="checkbox" name = "hand[]" value="<?=$serviceStack["featureName"];?>">
-                       <label class="form-check-label" for="hand" ><?=$serviceStack["featureName"];?></label><br>
-                        <?php 
+                            <input class="form-check-input" type="checkbox" name="hand[]"
+                                value="<?=$serviceStack["featureName"];?>">
+                            <label class="form-check-label" for="hand"><?=$serviceStack["featureName"];?></label><br>
+                            <?php 
                            $i++;}?>
-                       </div> 
+                        </div>
 
                     </div> <input type="button" name="previous" class="previous action-button-previous"
                         value="Previous" /> <input type="button" name="finish" class="next action-button"
@@ -281,6 +273,7 @@ echo $html;
 include 'includes/footer.php'
 ?>
 
+<script src="./formValidation.js"> </script>
 
 
 </body>
