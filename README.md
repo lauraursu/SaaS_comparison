@@ -6,3 +6,4 @@ TO DO
 * don't show price in cards if its null
 * make cards same size (card-body)
 * make form required
+* make the form validation on first 2 not like moms spaghetti 
