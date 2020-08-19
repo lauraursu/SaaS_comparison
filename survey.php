@@ -150,15 +150,16 @@ echo $html;
                         <h2 class="fs-title">Preferences</h2>
                         <b>Select</b> all that you find <b>important </b>
                         <div class="form-check">
-
+                        <input type="hidden" class="form-check-input" type="checkbox" name="hand[]" id="checkbox2" value="webinar" checked>
+                           <!-- <label type="hidden" class="form-check-label" for="hand">webinar</label><br> fix: hand[] cant be empty otherwise php breaks -->
                             <?php 
                        $features = mysqli_query($conn, "select featureName from features");
                        $i=0;
                        while($serviceStack = mysqli_fetch_assoc($features)){
                            ?>
-                            <input class="form-check-input" type="checkbox" name="hand[]"
+                            <input class="form-check-input" type="checkbox" name="hand[]" id="checkbox"
                                 value="<?=$serviceStack["featureName"];?>">
-                            <label class="form-check-label" for="hand"><?=$serviceStack["featureName"];?></label><br>
+                            <label class="form-check-label" for="hand" ><?=$serviceStack["featureName"];?></label><br>
                             <?php 
                            $i++;}?>
                         </div>

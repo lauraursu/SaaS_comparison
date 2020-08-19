@@ -109,11 +109,10 @@ if ($payFreq == "monthly"){
     $payFreqDB = "priceM";
 } else $payFreqDB = "priceY";           //if they choose it doesnt matter, we look at the yearly price because thats the lowest
 
-
 $selectedPreferences = $_POST['hand'];      //what are the functions they want, selected preferences !!its an array bc multiple items
-//$n = count($selectedPreferences); //how many preferences are selected
-//foreach ($selectedPreferences as $a) // all the values selected as preferences
-//echo  $a."\n";
+// $n = count($selectedPreferences); //how many preferences are selected
+// foreach ($selectedPreferences as $a) // all the values selected as preferences
+// echo  $a."\n";
 
 
   $hostsNULL = mysqli_query($conn, "SELECT serviceName from service where hosts is NULL");  //checking if there is no limit in the db for the hosts aka no data given 
