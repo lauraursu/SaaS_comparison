@@ -39,6 +39,7 @@ include 'includes/connect_to_db.php'
 <?php
 include 'includes/menu.php'
 ?>
+
 	<!--- Image Slider -->
 	<div id="slides" class="carousel slide" data-ride="carousel">
 		<ul class="carousel-indicators">
@@ -52,8 +53,8 @@ include 'includes/menu.php'
 				<div class="carousel-caption">
 					<h1 class="display-2">Bored of researching?</h1>
 					<h3> We already did it for you!</h3>
-					<button type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
-					<button type="button" class="btn btn-primary btn-lg">Compare</button>
+					<button onclick="smoothScroll(document.getElementById('second'))" type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
+				<a href=".\survey.php">	<button  type="button" class="btn btn-primary btn-lg">Compare</button> </a>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -61,8 +62,8 @@ include 'includes/menu.php'
 				<div class="carousel-caption">
 					<h1 class="display-2">Find what is right for Your Business</h1>
 					<h3> Let us help you choose!</h3>
-					<button type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
-					<button type="button" class="btn btn-primary btn-lg">Compare </button>
+					<button onclick="smoothScroll(document.getElementById('second'))" type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
+				<a href=".\survey.php">	<button type="button" class="btn btn-primary btn-lg">Compare </button></a>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -70,8 +71,8 @@ include 'includes/menu.php'
 				<div class="carousel-caption">
 					<h1 class="display-2">Short survey to happiness</h1>
 					<h3> Complete it to get the software closest to your needs</h3>
-					<button type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
-					<button type="button" class="btn btn-primary btn-lg">Compare </button>
+					<button onclick="smoothScroll(document.getElementById('second'))" type="button" class="btn btn-outline-light btn-lg">Tell me more</button>
+				<a href=".\survey.php">	<button type="button" class="btn btn-primary btn-lg">Compare </button> </a>
 				</div>
 			</div>
 		</div>
@@ -91,7 +92,7 @@ include 'includes/menu.php'
 
 	<!--- Welcome Section -->
 	<div class="container-fluid padding">
-		<div class="row welcome text-center">
+		<div class="row welcome text-center" id="second">
 			<div class="col-12">
 				<h1 class="display-4">How it works</h1>
 			</div>
@@ -104,8 +105,8 @@ include 'includes/menu.php'
 	</div>
 
 	<!--- Three Column Section -->
-	<div class="container-fluid padding">
-		<div class="row text-center padding">
+	<div class="container-fluid padding" >
+		<div class="row text-center padding" >
 			<div class="col-xs-12 col-sm-6 col-md-4 ">
 			<i class="far fa-edit"></i> <!-- font awesome icons!-->
 				<h3>Complete survey</h3>
@@ -171,8 +172,31 @@ include 'includes/menu.php'
 			return false;
 		});
 	});
-</script>
 
+
+	window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+</script>
 
 	<!--- Footer -->
 	

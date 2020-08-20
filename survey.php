@@ -106,12 +106,12 @@ $optionValues = array (
                         <label for="nrHosts">How many people will be <b>hosting</b> meetings</label>
                         <input class="form-control" id="nrHosts" name="nrHosts" type="number"
                             placeholder="Number of people hosting meetings" required>
-                            <p id="hostError" class="formError"></p>
+                            <p id="hostError" class="formError text-danger"  style="font-size: 10px;margin-top: -10px;"></p>
                         <label for="nrAttend">How many people will be <b>attending</b> your
                             meetings</label>
                         <input class="form-control" id="nrAttend" name="nrAttend" type="number"
                             placeholder="Number of people attending meetings">
-                            <p id="attendError" class="formError"></p>
+                            <p id="attendError" class="formError text-danger" style="font-size: 10px;margin-top: -10px;"></p>
                     </div> <input type="button" name="next" id="next1" class="next action-button" value="Next Step" />
                 </fieldset>
                 <fieldset>

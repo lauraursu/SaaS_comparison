@@ -1,6 +1,11 @@
 <?php
 session_start();
 $page = "result"; 		//used to find the active page for the menu; used in includes/menu/php
+if(!isset($_SERVER['HTTP_REFERER'])){
+    // redirect them to your desired location
+    header('location:../SaaS/survey.php');          //if they are accesing result.php directly, redirect
+    exit;
+}
 ?>
 
 

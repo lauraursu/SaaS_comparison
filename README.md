@@ -10,3 +10,4 @@ TO DO
 * error message on form if not number
 * take me home when clicking on the logo
 * make the links on index work
+* on half screen the caroousel text is too big
