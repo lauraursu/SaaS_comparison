@@ -7,3 +7,6 @@ TO DO
 * make cards same size (card-body)
 * make form required
 * make the form validation on first 2 not like moms spaghetti 
+* error message on form if not number
+* take me home when clicking on the logo
+* make the links on index work
