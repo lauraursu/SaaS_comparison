@@ -1,19 +1,20 @@
 # OmniCompare - SaaS comparison
-### Overview
+## Overview
 First bigger personal project, compares SaaS (for now online meetings services) based on a survey where users can select from price range, wanted features and others.
 
-#### Used technologies 
+### Used technologies 
 Developed locally with XAMPP, using Apache server and MySql. Frontend: html5, css3, bootstrap4, scss, JavaScript. Backend: php, mysql.
 
-#### Running the Project
-Live version: [link to Heroku](https://omnicompare-ul.herokuapp.com/index.php)
-From the repo:
-Using XAMPP:
-1.Copy the project in your htdocs dir.
-2.Start XAMPP and Start Apache & MySql.
-3.Go to PhpMyAdmin and run backend/saas_db.sql to creat and populate the database.
-4.Open the includes/connect_to_db.php file and change hostname to localhost, username to root, password to "" and database to saas_db. You should now be able to connect to this database.
-5.Open http://localhost/SaaS/index.php :)
+### Running the Project
+Live version: [link to Heroku](https://omnicompare-ul.herokuapp.com/index.php)  
+
+From the repo:  
+Using XAMPP:  
+1. Copy the project in your htdocs dir.  
+2. Start XAMPP and Start Apache & MySql.  
+3. Go to PhpMyAdmin and run backend/saas_db.sql to creat and populate the database.  
+4. Open the includes/connect_to_db.php file and change hostname to localhost, username to root, password to "" and database to saas_db. You should now be able to connect to this database.  
+5. Open http://localhost/SaaS/index.php :)  
 
 
 
