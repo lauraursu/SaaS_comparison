@@ -10,8 +10,9 @@ $page = "home"; 		//used to find the active page for the menu; used in includes/
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Welcome at OmniCompare!</title>
+	<!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -137,8 +138,14 @@ include 'includes/menu.php'
 				<p>Making an account is fast and easy, plus, it's Free! You only have to pay a small percentage if customers purchase from you trough us.</p>
 				<p>We also offer a limited number of sponsored results for you to fill in. Contact us to find out more!</p>
 				<br>
-				<a href="#" class="btn btn-primary">Sign up</a>
+				<a ><button class="btn btn-primary" data-toggle="tooltip" title="Coming soon!" data-placement="right">Sign up</button> </a>
 				</div>
+<script>			//for the tooltip
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
 			</div>
 			<div class="col-lg-6">
 				<img src="img/desk.png" class="img-fluid">
@@ -196,6 +203,7 @@ include 'includes/menu.php'
     // start scrolling
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
+
 </script>
 
 	<!--- Footer -->
