@@ -1,21 +1,18 @@
 <?php
+
+$hostname = getenv('hostname');
+$username = getenv('username');
+$password = getenv('password');
+$database = getenv('database');
+
 // Create connection
-$conn = new mysqli($hostname, $username, $password, $database);
+$conn = mysqli_connect($hostname, $username, $password, $database);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connection was successfully established!";
 
-
-// $conn = mysqli_connect("localhost", "root", "");
-// if (!$conn) {
-// 	echo "Unable  to connect to database";
-
-// } else
-
-// //	echo "Connected to database!";
-// mysqli_select_db($conn, "saas_db");
 
 ?>
