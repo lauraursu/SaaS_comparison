@@ -7,13 +7,12 @@ Developed locally with XAMPP, using Apache server and MySql. Frontend: html5, cs
 
 ### Running the Project
 Live version: [link to Heroku](https://omnicompare-ul.herokuapp.com/index.php)  
-
 From the repo:  
 Using XAMPP:  
-1. Copy the project in your htdocs dir.  
+1. Copy the project in your <b>htdocs</b> dir.  
 2. Start XAMPP and Start Apache & MySql.  
 3. Go to PhpMyAdmin and run backend/saas_db.sql to creat and populate the database.  
-4. Open the includes/connect_to_db.php file and change hostname to localhost, username to root, password to "" and database to saas_db. You should now be able to connect to this database.  
+4. Open the includes/connect_to_db.php file and change hostname to localhost, username to root, password to "" and database to saas_db (you can look at this data in your PhpMyAdmin). You should now be able to connect to this database.  
 5. Open http://localhost/SaaS/index.php :)  
 
 
